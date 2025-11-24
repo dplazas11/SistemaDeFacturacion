@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1075.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.poli.edu.sistemafacturacion.controlador.controladorReportes">
+   <left>
+      <VBox prefHeight="714.0" prefWidth="238.0" style="-fx-background-color: #E0E0E0;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="162.0" prefWidth="246.0" style="-fx-background-color: #0F385A;">
+               <children>
+                  <ImageView fitHeight="132.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pasaporte.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="245.0" style="-fx-background-color: #0F385A;">
+               <children>
+                  <Button fx:id="btnCrearCliente" layoutX="38.0" layoutY="91.0" mnemonicParsing="false" onAction="#clickCrearCliente" prefHeight="44.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="CREAR CLIENTE " textFill="#0f385a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnCrearVendedor" layoutX="37.0" layoutY="186.0" mnemonicParsing="false" onAction="#clickCrearVendedor" prefHeight="44.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="CREAR VENDEDEOR" textFill="#0f385a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnCrearProducto" layoutX="38.0" layoutY="274.0" mnemonicParsing="false" onAction="#clickCrearProducto" prefHeight="44.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="CREAR PRODUCTO" textFill="#0f385a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnReportes" layoutX="39.0" layoutY="361.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="178.0" style="-fx-background-color: #002147; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="REPORTES " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnVolver" layoutX="11.0" layoutY="500.0" mnemonicParsing="false" onAction="#clickVolver" prefHeight="37.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="VOLVER" textFill="#0f385a">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="832.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="83.0" prefWidth="827.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Label text="REPORTES" textFill="#0f385a">
+                     <font>
+                        <Font name="System Bold" size="46.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="828.0" style="-fx-background-color: #DDE7F0;">
+               <children>
+                  <Button fx:id="btnClienMasComp" layoutX="74.0" layoutY="23.0" mnemonicParsing="false" onAction="#clickClienteConMasCompras" prefHeight="50.0" prefWidth="299.0" style="-fx-background-color: #0F385A; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="CLIENTE CON MÁS COMPRAS" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnPromVenDia" layoutX="74.0" layoutY="224.0" mnemonicParsing="false" onAction="#clickPromedioVentasDiario" prefHeight="50.0" prefWidth="299.0" style="-fx-background-color: #0F385A; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="PROMEDIO DE VENDAS DIARIO" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnFactMasCos" layoutX="74.0" layoutY="158.0" mnemonicParsing="false" onAction="#clickFacturaMasCostosa" prefHeight="50.0" prefWidth="299.0" style="-fx-background-color: #0F385A; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="FACTURA MÁS COSTOSA" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnVentasComp" layoutX="431.0" layoutY="89.0" mnemonicParsing="false" onAction="#clickVentaPorCliente" prefHeight="50.0" prefWidth="299.0" style="-fx-background-color: #0F385A; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="TOTAL VENTAS POR CLIENTE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnVentVend" layoutX="431.0" layoutY="23.0" mnemonicParsing="false" onAction="#clickTotalVentasVendedor" prefHeight="50.0" prefWidth="299.0" style="-fx-background-color: #0F385A; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="TOTAL VENTAS POR VENDEDOR" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnTotalInv" layoutX="431.0" layoutY="224.0" mnemonicParsing="false" onAction="#clickTotalInventario" prefHeight="50.0" prefWidth="299.0" style="-fx-background-color: #0F385A; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="TOTAL INVENTARIO" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnCantProdVend" layoutX="431.0" layoutY="158.0" mnemonicParsing="false" onAction="#clickCantidadPromedioProductosVendidos" prefHeight="50.0" prefWidth="299.0" style="-fx-background-color: #0F385A; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="CANT PROMEDIO DE PRODUCTOS VENDIDOS" textFill="WHITE" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnVenDia" layoutX="74.0" layoutY="89.0" mnemonicParsing="false" onAction="#clickVentasPorDia" prefHeight="50.0" prefWidth="299.0" style="-fx-background-color: #0F385A; -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.6), 15, 0, -2, 2); -fx-background-radius: 15;" text="VENTAS POR DIA" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <TextArea fx:id="txtcuadrotexto" editable="false" layoutX="45.0" layoutY="307.0" prefHeight="298.0" prefWidth="730.0" wrapText="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

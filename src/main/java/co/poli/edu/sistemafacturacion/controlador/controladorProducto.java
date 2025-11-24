@@ -85,11 +85,10 @@ public class controladorProducto {
     @FXML
     void clickEliminarProducto(ActionEvent event) {
         String id_producto = IdProducto.getText();
-        
+
         String respuesta = repo.eliminar(id_producto);
         crearAlerta(respuesta);
         LimpiarDatos(1);
-        
 
     }
 
@@ -99,7 +98,7 @@ public class controladorProducto {
         String id_producto = IdProducto.getText();
         String descrip = descripcion.getText();
         int cant = Integer.parseInt(cantidad.getText());
-        double precioUnt = Double.parseDouble(precio.getText());
+        int precioUnt = Integer.parseInt(precio.getText());
 
         Object productoBuscado = repo.selectId(id_producto);
 
@@ -109,8 +108,10 @@ public class controladorProducto {
             String respuesta = repo.insertar(prod);
             crearAlerta(respuesta);
             LimpiarDatos(1);
+        } else {
+            crearAlerta("El producto ya existe. Por favor, ingrese un producto nuevo.");
         }
-        crearAlerta("El producto ya existe. Por favor, ingrese un producto nuevo.");
+
     }
 
     @FXML
@@ -123,20 +124,27 @@ public class controladorProducto {
             String id_prod = IdProducto.getText();
             String descrip = descripcion.getText();
             int cant = Integer.parseInt(cantidad.getText());
-            double precioUnt = Double.parseDouble(precio.getText());
+            int precioUnt = Integer.parseInt(precio.getText());
             Producto prod = new Producto(id_prod, descrip, cant, precioUnt);
-            
+
             String prodMod = repo.actualizar(prod);
             crearAlerta(prodMod);
             LimpiarDatos(1);
         }
 
-        
-
     }
 
     @FXML
-    void clickReportes(ActionEvent event) {
+    void clickReportes(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/co/poli/edu/sistemafacturacion/vista/reportes.fxml"));
+
+        Stage nuevaVentana = new Stage();
+        nuevaVentana.setScene(new Scene(root));
+        nuevaVentana.show();
+
+        // Cerrar la ventana actual
+        Stage actual = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        actual.close();
 
     }
 
@@ -163,7 +171,6 @@ public class controladorProducto {
 
         if (productoBuscado != null) {
             Producto productoEncontrado = (Producto) productoBuscado;
-
             descripcion.setText(productoEncontrado.getDescripcion());
             cantidad.setText(String.valueOf(productoEncontrado.getCantidad()));
             precio.setText(String.valueOf(productoEncontrado.getPrecioUnitario()));

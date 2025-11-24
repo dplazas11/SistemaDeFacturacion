@@ -43,7 +43,7 @@ public class operacionesProducto implements Operaciones<Producto>{
         f.setIdProducto(doc.getString("idproducto"));
         f.setDescripcion(doc.getString("descripcion"));
         f.setCantidad(doc.getInteger("cantidad"));
-        f.setPrecioUnitario(doc.getDouble("preciounitario"));
+        f.setPrecioUnitario(doc.getInteger("preciounitario"));
         return f;
     }
 

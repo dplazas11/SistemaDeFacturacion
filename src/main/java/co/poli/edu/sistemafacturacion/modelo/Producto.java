@@ -13,10 +13,10 @@ public class Producto {
     String idProducto;
     String Descripcion;
     int cantidad;
-    double precioUnitario;
+    int precioUnitario;
 
     public Producto(){}
-    public Producto(String codProducto, String Descripcion, int cantidad, double precioUnitario) {
+    public Producto(String codProducto, String Descripcion, int cantidad, int precioUnitario) {
         this.idProducto = codProducto;
         this.Descripcion = Descripcion;
         this.cantidad = cantidad;
@@ -47,11 +47,11 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public double getPrecioUnitario() {
+    public int getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
+    public void setPrecioUnitario(int precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
     

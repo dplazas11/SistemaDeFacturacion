@@ -6,14 +6,19 @@ import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Accumulators;
+import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import static com.mongodb.client.model.Filters.*;
+import com.mongodb.client.model.Sorts;
 import static com.mongodb.client.model.Updates.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 public class operacionesFactura implements Operaciones<Factura> {
 
@@ -31,6 +36,7 @@ public class operacionesFactura implements Operaciones<Factura> {
                 .append("idvendedor", factura.getIdVendedor())
                 .append("idcliente", factura.getIdCliente())
                 .append("fecha", factura.getFecha())
+                .append("canttotal", factura.getTotalCant())
                 .append("total", factura.getTotal());
     }
 
@@ -41,7 +47,8 @@ public class operacionesFactura implements Operaciones<Factura> {
         f.setIdVendedor(doc.getString("idvendedor"));
         f.setIdCliente(doc.getString("idcliente"));
         f.setFecha(doc.getString("fecha"));
-        f.setTotal(doc.getDouble("total"));
+        f.setTotalCant(doc.getInteger("canttotal"));
+        f.setTotal(doc.getInteger("total"));
         return f;
     }
 
@@ -79,6 +86,7 @@ public class operacionesFactura implements Operaciones<Factura> {
                             set("idvendedor", factura.getIdVendedor()),
                             set("idcliente", factura.getIdCliente()),
                             set("fecha", factura.getFecha()),
+                            set("canttotal", factura.getTotalCant()),
                             set("total", factura.getTotal())
                     )
             );
@@ -123,5 +131,22 @@ public class operacionesFactura implements Operaciones<Factura> {
             return "Error al listar facturas: " + e.getMessage();
         }
     }
-}
 
+    public String obtenerIdfactSiguiente() {
+
+        String idSiguiente = "";
+        Document ultimoDoc = collection.find()
+                .sort(Sorts.descending("idfactura"))
+                .limit(1)
+                .first();
+
+        if (ultimoDoc != null) {
+            String ultimoId = ultimoDoc.getString("idfactura");            
+            idSiguiente = String.valueOf(Integer.parseInt(ultimoId) + 1);
+        }
+
+        
+
+        return idSiguiente;
+    }
+}

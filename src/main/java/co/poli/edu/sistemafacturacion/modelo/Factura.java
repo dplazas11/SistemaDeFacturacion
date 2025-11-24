@@ -1,4 +1,3 @@
-
 package co.poli.edu.sistemafacturacion.modelo;
 
 /**
@@ -11,18 +10,28 @@ public class Factura {
     String fecha;
     String idCliente;
     String idVendedor;
-    double total;
+    int totalCant;
+    int total;
 
-    
-    public Factura() {}
-    public Factura(String idFactura, String fecha, String idCliente, String idVendedor, double total) {
+    public Factura() {
+    }
+
+    public Factura(String idFactura, String fecha, String idCliente, String idVendedor, int totalCant, int total) {
         this.idFactura = idFactura;
         this.fecha = fecha;
         this.idCliente = idCliente;
         this.idVendedor = idVendedor;
+        this.totalCant = totalCant;
         this.total = total;
     }
 
+    public int getTotalCant() {
+        return totalCant;
+    }
+
+    public void setTotalCant(int totalCant) {
+        this.totalCant = totalCant;
+    }
 
     public String getIdFactura() {
         return idFactura;
@@ -56,21 +65,19 @@ public class Factura {
         this.idVendedor = idVendedor;
     }
 
-    public double getTotal() {
+    public int getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(int total) {
         this.total = total;
     }
 
     @Override
     public String toString() {
-        return "Factura{" + "idFactura=" + idFactura + ", fecha=" + fecha + ", idCliente=" + idCliente + ", idVendedor=" + idVendedor + ", total=" + total + '}';
+        return "Factura{" + "idFactura=" + idFactura + ", fecha=" + fecha + ", idCliente=" + idCliente + ", idVendedor=" + idVendedor + ", totalCant=" + totalCant + ", total=" + total + '}';
     }
+
     
-    
-           
-            
-    
+
 }
