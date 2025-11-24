@@ -43,7 +43,7 @@ public class operacionesFactura implements Operaciones<Factura> {
     // Convertir Document → Factura
     private Factura documentToFactura(Document doc) {
         Factura f = new Factura();
-        f.setIdFactura(doc.getString("idfactura"));
+        f.setIdFactura(doc.getInteger("idfactura"));
         f.setIdVendedor(doc.getString("idvendedor"));
         f.setIdCliente(doc.getString("idcliente"));
         f.setFecha(doc.getString("fecha"));
@@ -141,8 +141,9 @@ public class operacionesFactura implements Operaciones<Factura> {
                 .first();
 
         if (ultimoDoc != null) {
-            String ultimoId = ultimoDoc.getString("idfactura");            
-            idSiguiente = String.valueOf(Integer.parseInt(ultimoId) + 1);
+            int ultimoId = ultimoDoc.getInteger("idfactura"); 
+            int sig = ultimoId + 1;
+            idSiguiente = String.valueOf(sig);
         }
 
         

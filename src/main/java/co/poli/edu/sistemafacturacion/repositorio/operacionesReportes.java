@@ -30,7 +30,7 @@ public class operacionesReportes {
 
     private Factura documentToFactura(Document doc) {
         Factura f = new Factura();
-        f.setIdFactura(doc.getString("idfactura"));
+        f.setIdFactura(doc.getInteger("idfactura"));
         f.setIdVendedor(doc.getString("idvendedor"));
         f.setIdCliente(doc.getString("idcliente"));
         f.setFecha(doc.getString("fecha"));
@@ -115,7 +115,7 @@ public class operacionesReportes {
             Factura facturaEnc = documentToFactura(docfactura);
 
             return "La factura " + facturaEnc.getIdFactura()
-                    + " tuvo la compra más costosa con un valor de " + facturaEnc.getTotal();
+                    + " tuvo la compra más costosa con un valor de " + facturaEnc.getTotal() + " el dia "+ facturaEnc.getFecha();
 
         } catch (MongoException e) {
             return "Error al buscar: " + e.getMessage();
@@ -123,8 +123,8 @@ public class operacionesReportes {
 
     }
 
-    public ArrayList<Document> VentaPorCliente() {
-        ArrayList<Document> listaResultado = new ArrayList<>();
+    public ArrayList<String> VentaPorCliente() {
+        ArrayList<String> listaResultado = new ArrayList<>();
 
         try {
             AggregateIterable<Document> resultado = collectionFactura.aggregate(
@@ -138,7 +138,7 @@ public class operacionesReportes {
             );
 
             for (Document doc : resultado) {
-                listaResultado.add(doc);
+                listaResultado.add(doc.getString("_id")+ ": " + String.valueOf(doc.getInteger("totalVentas")));
             }
 
         } catch (Exception e) {
@@ -209,8 +209,8 @@ public class operacionesReportes {
 
     }
 
-    public ArrayList<Document> TotalVentasVendedor() {
-        ArrayList<Document> listaResultado = new ArrayList<>();
+    public ArrayList<String> TotalVentasVendedor() {
+        ArrayList<String> listaResultado = new ArrayList<>();
 
         try {
             AggregateIterable<Document> resultado = collectionFactura.aggregate(
@@ -224,7 +224,7 @@ public class operacionesReportes {
             );
 
             for (Document doc : resultado) {
-                listaResultado.add(doc);
+                listaResultado.add(doc.getString("_id") + ": " + String.valueOf(doc.getInteger("totalVentas")));
             }
 
         } catch (Exception e) {
@@ -236,9 +236,9 @@ public class operacionesReportes {
 
     }
 
-    public ArrayList<Document> VentasPorDia() {
+    public ArrayList<String> VentasPorDia() {
 
-        ArrayList<Document> listaResultado = new ArrayList<>();
+        ArrayList<String> listaResultado = new ArrayList<>();
 
         try {
             AggregateIterable<Document> resultado = collectionFactura.aggregate(
@@ -246,13 +246,13 @@ public class operacionesReportes {
                             new Document("$group",
                                     new Document("_id", "$fecha")
                                             .append("totalVentas", new Document("$sum", "$total"))
-                            ),
-                            new Document("$sort", new Document("totalVentas", -1)) // Opcional
+                            )
+                            
                     )
             );
 
             for (Document doc : resultado) {
-                listaResultado.add(doc);
+                listaResultado.add(doc.getString("_id")+ ": " + String.valueOf(doc.getInteger("totalVentas")));
             }
 
         } catch (Exception e) {

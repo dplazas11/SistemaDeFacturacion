@@ -234,14 +234,14 @@ public class controladorFactura {
     @FXML
     void clickGuardarFactura(ActionEvent event) {
 
-        String id_fact = idFactura.getText();
+        int id_fact = Integer.parseInt(idFactura.getText());
         String fech = fecha.getText();
         String id_clie = idCliente.getText();
         String id_vend = IdVendedor.getText();
         int cant_Total = Integer.parseInt(cantTotal.getText());
         int total = Integer.parseInt(totalFactura.getText());
 
-        Object factBuscada = repoFact.selectId(id_fact);
+        Object factBuscada = repoFact.selectId(String.valueOf(id_fact));
 
         if (factBuscada == null) {
 

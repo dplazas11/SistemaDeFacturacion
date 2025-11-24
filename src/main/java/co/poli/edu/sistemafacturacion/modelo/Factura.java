@@ -6,7 +6,7 @@ package co.poli.edu.sistemafacturacion.modelo;
  */
 public class Factura {
 
-    String idFactura;
+    int idFactura;
     String fecha;
     String idCliente;
     String idVendedor;
@@ -16,7 +16,7 @@ public class Factura {
     public Factura() {
     }
 
-    public Factura(String idFactura, String fecha, String idCliente, String idVendedor, int totalCant, int total) {
+    public Factura(int idFactura, String fecha, String idCliente, String idVendedor, int totalCant, int total) {
         this.idFactura = idFactura;
         this.fecha = fecha;
         this.idCliente = idCliente;
@@ -33,11 +33,11 @@ public class Factura {
         this.totalCant = totalCant;
     }
 
-    public String getIdFactura() {
+    public int getIdFactura() {
         return idFactura;
     }
 
-    public void setIdFactura(String idFactura) {
+    public void setIdFactura(int idFactura) {
         this.idFactura = idFactura;
     }
 

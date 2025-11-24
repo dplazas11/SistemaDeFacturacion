@@ -127,9 +127,9 @@ public class controladorReportes {
 
     @FXML
     void clickVentaPorCliente(ActionEvent event) {
-        ArrayList<Document> respuesta = opRepo.VentaPorCliente();
+        ArrayList<String> respuesta = opRepo.VentaPorCliente();
         String mensaje = "Ventas por cliente: \n";
-        for (Document document : respuesta) {
+        for (String document : respuesta) {
             mensaje = mensaje + document.toString() + "\n";
 
         }
@@ -152,10 +152,10 @@ public class controladorReportes {
 
     @FXML
     void clickTotalVentasVendedor(ActionEvent event) {
-        ArrayList<Document> respuesta = opRepo.TotalVentasVendedor();
+        ArrayList<String> respuesta = opRepo.TotalVentasVendedor();
         String mensaje = "Ventas por vendedor : \n";
-        for (Document document : respuesta) {
-            mensaje = mensaje + document.toString() + "\n";
+        for (String document : respuesta) {
+            mensaje = mensaje + document + "\n";
 
         }
         txtcuadrotexto.setText(mensaje);
@@ -164,10 +164,10 @@ public class controladorReportes {
     @FXML
     void clickVentasPorDia(ActionEvent event) {
 
-        ArrayList<Document> respuesta = opRepo.VentasPorDia();
+        ArrayList<String> respuesta = opRepo.VentasPorDia();
         String mensaje = "Ventas por dia: \n";
-        for (Document document : respuesta) {
-            mensaje = mensaje + document.toString() + "\n";
+        for (String document : respuesta) {
+            mensaje = mensaje + document + "\n";
 
         }
         txtcuadrotexto.setText(mensaje);
